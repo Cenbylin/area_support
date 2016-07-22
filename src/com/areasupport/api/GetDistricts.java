@@ -14,30 +14,42 @@ import com.areasupport.service.AreaQueryService;
 import com.areasupport.support.MVCControler;
 import com.google.gson.Gson;
 
-public class GetProvinces extends HttpServlet {
+public class GetDistricts extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doPost(request, response);
 	}
+	/**
+	 * 根据省份获得城市
+	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		//返回json Map
 		Map<String, Object> jsonMap = new LinkedHashMap<String, Object>();
-		//调用service执行查询获得省份list
-		List<Map<String, Object>> provinces = null;
-		AreaQueryService areaQueryService = AreaQueryService.getInstance();
-		provinces = areaQueryService.getAllProvince();
-		//结果判断
-		if(provinces==null){
-			jsonMap.put("state", false);
+		//从前台获得参数
+		int cityId = 0;
+		try {
+			cityId = Integer.parseInt(request.getParameter("city_id"));
+		} catch (Exception e) {}
+		
+		if (cityId!=0) {
+			//调用service执行查询获得城市list
+			List<Map<String, Object>> districts = null;
+			AreaQueryService areaQueryService = AreaQueryService.getInstance();
+			districts = areaQueryService.getAllDistrict(cityId);
+			if (districts!=null) {
+				jsonMap.put("state", true);
+				jsonMap.put("districts", districts);
+			}else{
+				jsonMap.put("state", false);
+			}
 		}else{
-			jsonMap.put("state", true);
-			jsonMap.put("provinces", provinces);
+			jsonMap.put("state", false);
+			jsonMap.put("error", "wrong parameter.");
 		}
 		//封装json异步返回
 		Gson gson = new Gson();
 		MVCControler.ajax(gson.toJson(jsonMap), "text/html", request, response);
 	}
-
 }
