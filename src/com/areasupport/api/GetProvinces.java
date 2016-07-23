@@ -27,7 +27,7 @@ public class GetProvinces extends HttpServlet {
 		//调用service执行查询获得省份list
 		List<Map<String, Object>> provinces = null;
 		AreaQueryService areaQueryService = AreaQueryService.getInstance();
-		provinces = areaQueryService.getAllProvince();
+		provinces = areaQueryService.getAllProvinces();
 		//结果判断
 		if(provinces==null){
 			jsonMap.put("state", false);

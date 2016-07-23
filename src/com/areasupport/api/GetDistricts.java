@@ -37,7 +37,7 @@ public class GetDistricts extends HttpServlet {
 			//调用service执行查询获得城市list
 			List<Map<String, Object>> districts = null;
 			AreaQueryService areaQueryService = AreaQueryService.getInstance();
-			districts = areaQueryService.getAllDistrict(cityId);
+			districts = areaQueryService.getAllDistricts(cityId);
 			if (districts!=null) {
 				jsonMap.put("state", true);
 				jsonMap.put("districts", districts);

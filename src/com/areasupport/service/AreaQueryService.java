@@ -27,16 +27,16 @@ public class AreaQueryService {
 	 * 获得所有省份
 	 * @return
 	 */
-	public List<Map<String, Object>> getAllProvince(){
+	public List<Map<String, Object>> getAllProvinces(){
 		ProvinceDao provinceDao = ProvinceDao.getInstance();
-		return provinceDao.getAllProvince();
+		return provinceDao.getAllProvinces();
 	}
 	/**
 	 * 获得所有城市
 	 * @param proId
 	 * @return
 	 */
-	public List<Map<String, Object>> getAllCity(int proId){
+	public List<Map<String, Object>> getAllCities(int proId){
 		CityDao cityDao = CityDao.getInstance();
 		return cityDao.getAllCitiesByProId(proId);
 	}
@@ -45,7 +45,7 @@ public class AreaQueryService {
 	 * @param proId
 	 * @return
 	 */
-	public List<Map<String, Object>> getAllDistrict(int cityId){
+	public List<Map<String, Object>> getAllDistricts(int cityId){
 		DistrictDao districtDao = DistrictDao.getInstance();
 		return districtDao.getAllDistrictsByCityId(cityId);
 	}
