@@ -1,4 +1,4 @@
-package com.areasupport.api;
+package com.areasupport.api.servlet;
 
 import java.io.IOException;
 import java.util.LinkedHashMap;
@@ -10,11 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.areasupport.service.AreaQueryService;
+import com.areasupport.api.servlet.service.AreaQueryService;
 import com.areasupport.support.MVCControler;
 import com.google.gson.Gson;
 
-public class GetCities extends HttpServlet {
+public class GetDistricts extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -28,19 +28,19 @@ public class GetCities extends HttpServlet {
 		//返回json Map
 		Map<String, Object> jsonMap = new LinkedHashMap<String, Object>();
 		//从前台获得参数
-		int proId = 0;
+		int cityId = 0;
 		try {
-			proId = Integer.parseInt(request.getParameter("pro_id"));
+			cityId = Integer.parseInt(request.getParameter("city_id"));
 		} catch (Exception e) {}
 		
-		if (proId!=0) {
+		if (cityId!=0) {
 			//调用service执行查询获得城市list
-			List<Map<String, Object>> cities = null;
+			List<Map<String, Object>> districts = null;
 			AreaQueryService areaQueryService = AreaQueryService.getInstance();
-			cities = areaQueryService.getAllCities(proId);
-			if (cities!=null) {
+			districts = areaQueryService.getAllDistricts(cityId);
+			if (districts!=null) {
 				jsonMap.put("state", true);
-				jsonMap.put("cities", cities);
+				jsonMap.put("districts", districts);
 			}else{
 				jsonMap.put("state", false);
 			}
@@ -52,5 +52,4 @@ public class GetCities extends HttpServlet {
 		Gson gson = new Gson();
 		MVCControler.ajax(gson.toJson(jsonMap), "text/html", request, response);
 	}
-
 }

@@ -1,6 +1,9 @@
 package com.areasupport.bean;
 
-public class CityBean {
+import java.io.Serializable;
+
+public class CityBean implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private String cityName;
 	private int cityId;
 	public String getCityName() {

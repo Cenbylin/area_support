@@ -1,6 +1,9 @@
 package com.areasupport.bean;
 
-public class ProvinceBean {
+import java.io.Serializable;
+
+public class ProvinceBean implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private String proName;
 	private int proId;
 	private String proRemark;

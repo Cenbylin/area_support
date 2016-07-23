@@ -7,15 +7,15 @@
   <display-name></display-name>
   <servlet>
     <servlet-name>GetProvinces</servlet-name>
-    <servlet-class>com.areasupport.api.GetProvinces</servlet-class>
+    <servlet-class>com.areasupport.api.servlet.GetProvinces</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>GetCities</servlet-name>
-    <servlet-class>com.areasupport.api.GetCities</servlet-class>
+    <servlet-class>com.areasupport.api.servlet.GetCities</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>GetDistricts</servlet-name>
-    <servlet-class>com.areasupport.api.GetDistricts</servlet-class>
+    <servlet-class>com.areasupport.api.servlet.GetDistricts</servlet-class>
   </servlet>
 
   <servlet-mapping>

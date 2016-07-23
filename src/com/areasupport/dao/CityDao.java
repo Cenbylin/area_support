@@ -1,5 +1,6 @@
 package com.areasupport.dao;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.util.List;
 import java.util.Map;
@@ -16,7 +17,8 @@ import com.areasupport.bean.CityBean;
 import com.areasupport.support.DBConnectionManager;
 
 
-public class CityDao {
+public class CityDao implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private static CityDao instance;
 	/**私有构造方法*/
 	private CityDao(){}

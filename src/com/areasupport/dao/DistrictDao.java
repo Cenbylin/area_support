@@ -1,5 +1,6 @@
 package com.areasupport.dao;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +16,8 @@ import org.apache.commons.dbutils.handlers.MapListHandler;
 import com.areasupport.bean.DistrictBean;
 import com.areasupport.support.DBConnectionManager;
 
-public class DistrictDao {
+public class DistrictDao implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private static DistrictDao instance;
 	/**私有构造方法*/
 	private DistrictDao(){}
