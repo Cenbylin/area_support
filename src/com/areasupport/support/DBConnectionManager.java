@@ -11,15 +11,15 @@ public class DBConnectionManager {
 	static{
 		try {
 			dataSource = new ComboPooledDataSource();
-			dataSource.setUser("root");
-			dataSource.setPassword("037037037");
-			dataSource.setJdbcUrl("jdbc:mysql:///area_support");
-			dataSource.setDriverClass("com.mysql.jdbc.Driver");
-			dataSource.setInitialPoolSize(10);
-			dataSource.setMinPoolSize(5);
-			dataSource.setMaxPoolSize(50);
-			dataSource.setMaxStatements(100);
-			dataSource.setMaxIdleTime(60);
+			dataSource.setUser(ConfigLoader.getJdbcUser());
+			dataSource.setPassword(ConfigLoader.getJdbcPassword());
+			dataSource.setJdbcUrl(ConfigLoader.getJdbcUrl());
+			dataSource.setDriverClass(ConfigLoader.getJdbcDriver());
+			dataSource.setInitialPoolSize(ConfigLoader.getJdbcInitialPoolSize());
+			dataSource.setMinPoolSize(ConfigLoader.getJdbcMinPoolSize());
+			dataSource.setMaxPoolSize(ConfigLoader.getJdbcMaxPoolSize());
+			dataSource.setMaxStatements(ConfigLoader.getJdbcMaxStatements());
+			dataSource.setMaxIdleTime(ConfigLoader.getJdbcMaxIdleTime());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

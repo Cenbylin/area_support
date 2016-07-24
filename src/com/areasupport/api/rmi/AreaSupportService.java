@@ -25,4 +25,22 @@ public interface AreaSupportService extends Remote{
 	 * @return
 	 */
 	public List<DistrictBean> getAllDistricts(int cityId);
+	/**
+	 * 获得省份对象
+	 * @param proId
+	 * @return
+	 */
+	public ProvinceBean getProvinceById(int proId);
+	/**
+	 * 获得城市对象
+	 * @param cityId
+	 * @return
+	 */
+	public CityBean getCityById(int cityId);
+	/**
+	 * 获得地区对象
+	 * @param disId
+	 * @return
+	 */
+	public DistrictBean getDistrictById(int disId);
 }

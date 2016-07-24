@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.junit.Test;
 
+import com.areasupport.bean.DistrictBean;
+import com.areasupport.dao.DistrictDao;
 import com.areasupport.dao.ProvinceDao;
 import com.areasupport.support.DBConnectionManager;
 import com.google.gson.Gson;
@@ -32,5 +34,12 @@ public class GsonTest {
 	public void getAllProvinces(){
 		ProvinceDao provinceDao = ProvinceDao.getInstance();
 		System.out.println(provinceDao.getAllProvinces());
+	}
+	
+	@Test
+	public void daoTest(){
+		DistrictDao dao = DistrictDao.getInstance();
+		DistrictBean bean = dao.getDistrictObjectByDisId(1);
+		System.out.println(bean.getDisName());
 	}
 }

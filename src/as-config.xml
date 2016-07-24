@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<areasupport>
+	<jdbc>
+		<url>jdbc:mysql:///area_support</url>
+		<user>root</user>
+		<password>037037037</password>
+		<driver>com.mysql.jdbc.Driver</driver>
+		<initialPoolSize>10</initialPoolSize>
+		<minPoolSize>5</minPoolSize>
+		<maxPoolSize>50</maxPoolSize>
+		<maxStatements>100</maxStatements>
+		<maxIdleTime>60</maxIdleTime>
+	</jdbc>
+	<webservice>
+		<address>http://localhost:8333/areasupport</address>
+	</webservice>
+	<rmi>
+		<name>rmi://127.0.0.1:8222/areasupport</name>
+		<port>8222</port>
+	</rmi>
+</areasupport>

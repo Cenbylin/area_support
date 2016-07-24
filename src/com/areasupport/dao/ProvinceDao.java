@@ -10,6 +10,7 @@ import org.apache.commons.dbutils.BeanProcessor;
 import org.apache.commons.dbutils.GenerousBeanProcessor;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.RowProcessor;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.MapListHandler;
 
@@ -70,6 +71,32 @@ public class ProvinceDao implements Serializable{
 	        	conn = DBConnectionManager.getConnection();  
 	        }
 	        provinces = new QueryRunner().query(conn, SQL, new BeanListHandler<ProvinceBean>(ProvinceBean.class, processor));
+	    } catch (Exception e) {
+	        e.printStackTrace();  
+	    } finally {  
+	    	DBConnectionManager.closeConnection(conn);
+	    }  
+		return provinces;
+	}
+	/**
+	 * 获得省份(对象形式)
+	 * @return
+	 */
+	public ProvinceBean getProvinceObjectByProId(int proId){
+		//兼容下划线字段，dbutils处理器
+		// GenerousBeanProcessor 仅仅重写了父类BeanProcessor的mapColumnsToProperties方法
+		BeanProcessor bean = new GenerousBeanProcessor();
+		// 将GenerousBeanProcessor对象传递给BasicRowProcessor
+		RowProcessor processor = new BasicRowProcessor(bean);
+				
+		Connection conn = null;
+		ProvinceBean provinces = null;
+		final String SQL = "select pro_name,pro_id,pro_remark from t_province where pro_id=?";  
+	    try {
+	        if (null == conn || conn.isClosed()){
+	        	conn = DBConnectionManager.getConnection();  
+	        }
+	        provinces = new QueryRunner().query(conn, SQL, new BeanHandler<ProvinceBean>(ProvinceBean.class, processor), new Object[]{proId});
 	    } catch (Exception e) {
 	        e.printStackTrace();  
 	    } finally {  

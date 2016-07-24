@@ -10,6 +10,7 @@ import org.apache.commons.dbutils.BeanProcessor;
 import org.apache.commons.dbutils.GenerousBeanProcessor;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.RowProcessor;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.MapListHandler;
 
@@ -78,4 +79,31 @@ public class CityDao implements Serializable{
 		return cities;
 	}
 	
+	/**
+	 * 根据city_id获得城市(对象形式)
+	 * @param proId
+	 * @return
+	 */
+	public CityBean getCityObjectByCityId(int cityId){
+		//兼容下划线字段，dbutils处理器
+		// GenerousBeanProcessor 仅仅重写了父类BeanProcessor的mapColumnsToProperties方法
+		BeanProcessor bean = new GenerousBeanProcessor();
+		// 将GenerousBeanProcessor对象传递给BasicRowProcessor
+		RowProcessor processor = new BasicRowProcessor(bean);
+		
+		Connection conn = null;
+		CityBean cities = null;
+		final String SQL = "select city_name,city_id from t_city where city_id=?";  
+	    try {
+	        if (null == conn || conn.isClosed()){
+	        	conn = DBConnectionManager.getConnection();
+	        }
+	        cities = new QueryRunner().query(conn, SQL, new BeanHandler<CityBean>(CityBean.class, processor), new Object[]{cityId});
+	    } catch (Exception e) {
+	        e.printStackTrace();  
+	    } finally {  
+	    	DBConnectionManager.closeConnection(conn);
+	    }  
+		return cities;
+	}
 }

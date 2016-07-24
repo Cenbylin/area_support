@@ -42,4 +42,30 @@ public class AreaSupportService {
 	public @WebResult(name="districtInfoList") List<DistrictBean> getAllDistricts(@WebParam(name="cityId") int cityId){
 		return districtDao.getAllDistrictObjectsByCityId(cityId);
 	}
+	/**
+	 * 获得省份对象
+	 * @param proId
+	 * @return
+	 */
+	public @WebResult(name="provinceInfo") ProvinceBean getProvinceById(@WebParam(name="proId") int proId){
+		return provinceDao.getProvinceObjectByProId(proId);
+	}
+	/**
+	 * 获得城市对象
+	 * @param cityId
+	 * @return
+	 */
+	public @WebResult(name="cityInfo") CityBean getCityById(@WebParam(name="cityId") int cityId){
+		return cityDao.getCityObjectByCityId(cityId);
+	}
+	/**
+	 * 获得地区对象
+	 * @param disId
+	 * @return
+	 */
+	public @WebResult(name="districtInfo") DistrictBean getDistrictById(@WebParam(name="disId") int disId){
+		return districtDao.getDistrictObjectByDisId(disId);
+	}
+	
+	
 }

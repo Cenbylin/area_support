@@ -13,7 +13,7 @@ public class Client {
 	
 	@Test
 	public void rmiTest() throws MalformedURLException, RemoteException, NotBoundException{
-		AreaSupportService ass = (AreaSupportService)Naming.lookup("rmi://192.168.1.113:8455/areaSupportService");
+		AreaSupportService ass = (AreaSupportService)Naming.lookup("rmi://as.cenbylin.cn:8222/areasupport");
 		System.out.println(ass.getAllProvinces());
 	}
 }

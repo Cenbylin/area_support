@@ -44,5 +44,17 @@ public class AreaSupportServiceImpl implements AreaSupportService,Serializable{
 	public @WebResult(name="districtInfoList") List<DistrictBean> getAllDistricts(@WebParam(name="cityId") int cityId){
 		return districtDao.getAllDistrictObjectsByCityId(cityId);
 	}
+	@Override
+	public ProvinceBean getProvinceById(int proId) {
+		return provinceDao.getProvinceObjectByProId(proId);
+	}
+	@Override
+	public CityBean getCityById(int cityId) {
+		return cityDao.getCityObjectByCityId(cityId);
+	}
+	@Override
+	public DistrictBean getDistrictById(int disId) {
+		return districtDao.getDistrictObjectByDisId(disId);
+	}
 
 }

@@ -5,6 +5,10 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
 	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
   <display-name></display-name>
+  	<listener>
+		<listener-class>com.areasupport.support.listener.IncludeListener</listener-class>
+	</listener>
+	  
   <servlet>
     <servlet-name>GetProvinces</servlet-name>
     <servlet-class>com.areasupport.api.servlet.GetProvinces</servlet-class>
