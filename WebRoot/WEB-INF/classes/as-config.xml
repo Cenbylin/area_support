@@ -12,10 +12,10 @@
 		<maxIdleTime>60</maxIdleTime>
 	</jdbc>
 	<webservice>
-		<address>http://localhost:8333/areasupport</address>
+		<address>http://0.0.0.0:8333/areasupport</address>
 	</webservice>
 	<rmi>
-		<name>rmi://127.0.0.1:8222/areasupport</name>
+		<name>rmi://0.0.0.0:8222/areasupport</name>
 		<port>8222</port>
 	</rmi>
 </areasupport>

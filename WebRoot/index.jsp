@@ -24,9 +24,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   	<h1>Area Support 省市区三级联动数据库 外供调用 工程范例</h1>
     <h2>webservice测试</h2>
-    address:&nbsp;<a href='<%=ConfigLoader.getWebserviceAddress().replaceFirst("http://(.+?):", request.getScheme()+"://"+request.getServerName()+":") %>' target="_blank"><%=ConfigLoader.getWebserviceAddress().replaceFirst("http://(.+?):", request.getScheme()+"://"+request.getServerName()+":") %></a>
+    address:&nbsp;<a href='<%=ConfigLoader.getWebserviceAddress().replaceFirst("http://(.+?):", request.getScheme()+"://"+request.getServerName()+":") + "?wsdl" %>' target="_blank"><%=ConfigLoader.getWebserviceAddress().replaceFirst("http://(.+?):", request.getScheme()+"://"+request.getServerName()+":") + "?wsdl"%></a>
     <h2>rmi测试</h2>
-    address:&nbsp;<a href='<%=ConfigLoader.getRmiName() %>'><%=ConfigLoader.getRmiName() %></a><br/>
+    address:&nbsp;<a href='<%=ConfigLoader.getRmiName().replaceFirst("rmi://(.+?):", "rmi://"+request.getServerName()+":") %>' target="_blank"><%=ConfigLoader.getRmiName().replaceFirst("rmi://(.+?):", "rmi://"+request.getServerName()+":") %></a><br/>
     port:&nbsp;<%=ConfigLoader.getRmiPort() %>
     <h2>json数据版本</h2>
     <ul>
