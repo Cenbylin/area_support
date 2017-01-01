@@ -38,7 +38,7 @@ public class ProvinceDao implements Serializable{
 	public List<Map<String, Object>> getAllProvinces(){
 		Connection conn = null;
 		List<Map<String, Object>> provinces = null;
-		final String SQL = "select pro_name,pro_id,pro_remark from t_province";  
+		final String SQL = "select pro_name,pro_id from t_province";  
 	    try {
 	        if (null == conn || conn.isClosed()){
 	        	conn = DBConnectionManager.getConnection();  
